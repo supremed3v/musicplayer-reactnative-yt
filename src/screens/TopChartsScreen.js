@@ -9,14 +9,17 @@ import {
 import React from "react";
 
 import { useGetTopChartsQuery } from "../redux/services/shazamCore";
+import SongCard from "../components/SongCard";
+import { useSelector } from "react-redux";
 
 export default function TopArtistsScreen() {
   const { data, isFetching, error } = useGetTopChartsQuery();
-  if (isFetching) return <Text>Loading Artists...</Text>;
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
+  if (isFetching) return <Text>Loading Top Songs...</Text>;
   if (error) return <Text>Error</Text>;
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Top Artists</Text>
+      <Text style={styles.heading}>Top Songs</Text>
       <SafeAreaView>
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -29,33 +32,15 @@ export default function TopArtistsScreen() {
               flexWrap: "wrap",
             }}
           >
-            {data?.map((track) => (
-              <View
-                key={track.id}
-                style={{
-                  width: "50%",
-                  paddingVertical: 10,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Image
-                  style={styles.img}
-                  source={{ uri: `${track?.images?.coverart}` }}
-                />
-                <Text
-                  style={{
-                    paddingTop: 3,
-                    width: "60%",
-                    textAlign: "center",
-                    color: "#fff",
-                    fontSize: 16,
-                    fontWeight: "500",
-                  }}
-                >
-                  {track?.subtitle}
-                </Text>
-              </View>
+            {data?.map((song, i) => (
+              <SongCard
+                key={song.key}
+                song={song}
+                isPlaying={isPlaying}
+                activeSong={activeSong}
+                data={data}
+                i={i}
+              />
             ))}
           </View>
         </ScrollView>

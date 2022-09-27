@@ -14,8 +14,8 @@ export default function TopCharts() {
   if (isFetching) return <Text>Loading Artists...</Text>;
   if (error) return <Text>Error</Text>;
 
-  const onPressTopArtist = () => {
-    navigation.navigate("TopArtistScreen");
+  const onPressTopCharts = () => {
+    navigation.navigate("TopChartsScreen");
   };
   return (
     <View style={styles.container}>
@@ -38,7 +38,7 @@ export default function TopCharts() {
               i={i}
             />
           ))}
-          <Button text="View more..." onPress={onPressTopArtist} />
+          <Button text="View more..." onPress={onPressTopCharts} />
         </View>
       </ScrollView>
     </View>

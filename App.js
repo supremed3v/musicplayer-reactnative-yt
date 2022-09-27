@@ -12,6 +12,7 @@ import TopArtist from "./src/components/TopArtist";
 import TopCharts from "./src/components/TopCharts";
 import MusicPlayer from "./src/components/MusicPlayer";
 import TopArtistsScreen from "./src/screens/TopArtistsScreen";
+import TopChartsScreen from "./src/screens/TopChartsScreen";
 
 const Tab = createBottomTabNavigator();
 const ScreenStack = createNativeStackNavigator();
@@ -28,6 +29,7 @@ const HomeComponent = () => {
       <ScreenStack.Screen name="TopCharts" component={TopCharts} />
       <ScreenStack.Screen name="Player" component={MusicPlayer} />
       <ScreenStack.Screen name="TopArtistScreen" component={TopArtistsScreen} />
+      <ScreenStack.Screen name="TopChartsScreen" component={TopChartsScreen} />
     </ScreenStack.Navigator>
   );
 };
