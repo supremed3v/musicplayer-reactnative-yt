@@ -1,16 +1,18 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React from "react";
 import Discover from "../components/Discover";
 import TopArtist from "../components/TopArtist";
+import TopCharts from "../components/TopCharts";
 
-export default function Home({}) {
+export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
-      {/* <Text>Discover</Text> */}
-      <Discover />
-      <TopArtist />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Discover />
+        <TopArtist />
 
-      <Text>Top Charts</Text>
+        <TopCharts />
+      </ScrollView>
     </View>
   );
 }
@@ -18,7 +20,7 @@ export default function Home({}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#212f45",
     paddingTop: 50,
     paddingHorizontal: 40,
   },
